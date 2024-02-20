@@ -34,36 +34,34 @@ const getSingleTour = async (req, res) => {
   }
 };
 
-const updateTour = async (req, res) => {
+const removeTour = async (req, res) => {
   try {
-    if (req.file) {
-      const upload = await uploadToCloud(req.file, res);
-      const update = await Tours.findByIdAndUpdate(req.params.id, {
-        heading: req.body.heading,
-        tourImage: upload.secure_url,
-        tourDescription: req.body.tourDescription,
-      })
-       res.status(200).json({messag:"updated Successfully" , update})
-    }
-    else{
-        const update = await Tours.findByIdAndUpdate(req.params.id , {
-            heading:req.body.heading,
-            tourDescription:req.body.tourDescription
-        })
-        res.status(200).json({message:"updated Successfully" , update})
-    }
-
+    await Tours.findByIdAndDelete(req.params.id);
+    res.status(200).json({ status: 'tour Deleted successfully' });
   } catch (error) {
-    res.status(500).json({status:"failed to update",message:error.message})
+    res.status(500).json({ status: 'failes', message: error.message });
   }
 };
 
-const removeTour = async(req,res)=>{
-    try {
-        await Tours.findByIdAndDelete(req.params.id)
-        res.status(200).json({status:"tour Deleted successfully"})
-    } catch (error) {
-        res.status(500).json({status:"failes" , message:error.message})
+const updatee = async (req, res) => {
+  try {
+    if(req.file){
+      const upload = await uploadToCloud(req.file , res)
+      const upda = await Tours.findByIdAndUpdate(req.params.id,{
+        heading:req.body.heading,
+        tourImage:upload.secure_url,
+        tourDescription:req.body.tourDescription
+      })
+
+    }else{
+      const upda = await Tours.findByIdAndUpdate(req.params.id,{
+        heading:req.body.heading,
+        tourDescription:req.body.tourDescription
+      })
     }
+    res.status(200).json({status:"updated"})
+  } catch (error) {
+   res.status(500).json({status:"failed" , message:error.message}) 
+  }
 }
-module.exports = { createTour, getTour, getSingleTour , updateTour , removeTour};
+module.exports = { createTour, getTour, getSingleTour, removeTour, updatee };

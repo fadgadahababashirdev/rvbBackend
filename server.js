@@ -5,7 +5,7 @@ const app=express()
 app.use(express.json())
 app.use(cors())
 require("dotenv").config()
-
+app.use(express.urlencoded({ extended: false}));
 // user router
 const router = require("./routes/userRoute")
 app.use("/" , router)
@@ -17,6 +17,12 @@ app.use("/" , router)
 // toursRouter
 const tourRoute = require("./routes/toursRoute")
 app.use("/" , tourRoute)
+
+
+// team Route
+const teamRoute = require("./routes/teamRoute")
+app.use("/" , teamRoute)
+
 
 app.get("/*" , (req,res)=>{
     res.send("could not find the router").json({message:error.message})

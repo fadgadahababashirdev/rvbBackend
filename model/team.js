@@ -1,0 +1,21 @@
+const mongoose = require("mongoose")
+const teamSchema = mongoose.Schema({
+    memberImage:{
+        type:String,
+        required:true
+    },
+    name:{
+        type:String,
+        required:true
+    },
+    title:{
+        type:String,
+        required:true
+    },
+    description:{
+        type:String,
+        required:true
+    },
+})
+
+module.exports = mongoose.model("team" , teamSchema)
