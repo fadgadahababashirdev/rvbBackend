@@ -36,30 +36,38 @@ const getSingleTeam = async (req, res) => {
   }
 };
 
-const remake = async(req,res)=>{
-    try {
-        if(req.file){
-            const upload = await uploadToCloud(req.file,res)
-            const update  =await Team.findByIdAndUpdate(req.params.id,{
-                memberImage:upload.secure_url,
-                title:req.body.title,
-                name:req.body.name,
-                description:req.body.description
-            })
-
-        }else{
-            const update  =await Team.findByIdAndUpdate(req.params.id,{
-
-                title:req.body.title,
-                name:req.body.name,
-                description:req.body.description
-            })
-        }
-        res.status(200).json({status:"data successfully updated"})
-    } catch (error) {
-        res.status(500).json({status:"failed" , message:error.message})
+const remake = async (req, res) => {
+  try {
+    if (req.file) {
+      const upload = await uploadToCloud(req.file, res);
+      const update = await Team.findByIdAndUpdate(req.params.id, {
+        memberImage: upload.secure_url,
+        title: req.body.title,
+        name: req.body.name,
+        description: req.body.description,
+      });
+    } else {
+      const update = await Team.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        name: req.body.name,
+        description: req.body.description,
+      });
     }
-}
+    res.status(200).json({ status: 'data successfully updated' });
+  } catch (error) {
+    res.status(500).json({ status: 'failed', message: error.message });
+  }
+};
 
+const removee = async (req, res) => {
+  try {
+    const erase = await Team.findByIdAndDelete(req.params.id);
+    res.status(200).json({ status: 'successfully deleted' });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ status: 'could not delete member', message: error.message });
+  }
+};
 
-module.exports = { createTeam, getTeam, getSingleTeam, remake };
+module.exports = { createTeam, getTeam, getSingleTeam, remake, removee };
