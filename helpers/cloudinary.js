@@ -1,26 +1,3 @@
-// const cloudinary = require("cloudinary");
-// require("dotenv").config();
-
-// cloudinary.config({
-//     cloud_name: process.env.cloud_name,
-//     api_key: process.env.api_key,
-//     api_secret: process.env.api_secret
-// });
-
-// const uploadToCloud = async (files, res) => {
-//     try {
-//         const uploadPromises = files.map(async file => {
-//             const response = await cloudinary.uploader.upload(file.path);
-//             return response;
-//         });
-
-//         const uploadResults = await Promise.all(uploadPromises);
-
-//         return uploadResults;
-//     } catch (error) {
-//         return res.status(500).json({ message: error.message });
-//     }
-// };
 
 // module.exports = uploadToCloud;
 const cloudinary = require('cloudinary');
