@@ -30,10 +30,12 @@ const booking = require('./routes/bookingRoute');
 app.use('/', booking);
 
 // contact Router
-
 const contactRouter = require('./routes/contact');
 app.use('/', contactRouter);
 
+// placeRouter
+const placeRoute = require('./routes/placeRoute');
+app.use("/" , placeRoute)
 
 app.get('/*', (req, res) => {
   res.send('could not find the router');

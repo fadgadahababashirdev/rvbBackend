@@ -23,7 +23,7 @@ const createContactUs = async (req, res) => {
         <title>Document</title>
     </head>
     <body>
-        <h1>Hey we have seen your email<h1>
+        <h1>Thank you for reaching out to us we are reviewing your message and we shall get back to you as soon as possible<h1>
     </body>
     </html>
     `
@@ -73,7 +73,7 @@ const deleteContact = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ status: 'deliting contact refused', message: error.message });
+      .json({ status: 'deleting contact refused', message: error.message });
   }
 };
 module.exports = {
