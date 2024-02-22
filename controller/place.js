@@ -4,7 +4,7 @@ const uploadToCloud = require('../helpers/cloudinary');
 const findPlace = async (req, res) => {
   try {
     const fndPlace = await places.find();
-    res.status(200).json({ status: 'failed', fndPlace });
+    res.status(200).json({ status: 'success', fndPlace });
   } catch (error) {
     res.status(500).json({ status: 'failed', fndPlace });
   }
