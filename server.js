@@ -40,6 +40,7 @@ app.use("/" , placeRoute)
 app.get('/*', (req, res) => {
   res.send('could not find the router');
 });
+
 const con = async () => {
   try {
     const conn = await mongoose.connect(process.env.database);
@@ -48,7 +49,7 @@ const con = async () => {
       console.log(`app running on port http://localhost:${process.env.port}`)
     );
   } catch (error) {
-    console.log('db not connected');
+    console.log(error);
   }
 };
 
