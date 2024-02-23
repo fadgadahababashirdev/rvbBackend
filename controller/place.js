@@ -39,7 +39,7 @@ const updatePlace = async (req, res) => {
         placeName: req.body.placeName,
       });
     } else {
-      const update = await places.findByIdAndUpate(req.params.id, {
+      const update = await places.findByIdAndUpdate(req.params.id, {
         placeName: req.body.placeName,
       });
     }
