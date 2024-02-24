@@ -12,7 +12,7 @@ const createTour = async (req, res) => {
     });
     res.status(200).json(create);
   } catch (error) {
-    res.status(500).json({ status: 'failed' });
+    res.status(400).json({ status: 'failed' , message:error.message });
   }
 };
 
