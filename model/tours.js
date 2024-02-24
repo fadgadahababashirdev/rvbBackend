@@ -1,16 +1,16 @@
 const mongoose =require("mongoose")
 const tours = mongoose.Schema({
     heading:{
-        type:String,
-        required:true
+        type:String
+        
     },
     tourImage:{
-        type:String,
-        required:true
+        type:String
+        
     },
     tourDescription:{
-        type:String,
-        required:true,
+        type:String
+        
     
     }
 })
