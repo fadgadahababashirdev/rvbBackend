@@ -8,7 +8,7 @@ const createBooking = async(req,res)=>{
             phone:req.body.phone,
             numberOfPeople:req.body.numberOfPeople,
             date:req.body.date,
-            // message:req.body.message
+            message:req.body.message
 
         })
 
@@ -50,7 +50,7 @@ const updateBooking = async(req,res)=>{
             phone:req.body.phone,
             numberOfPeople:req.body.numberOfPeople,
             date:req.body.date , 
-            // message:req.body.message
+            message:req.body.message
         })
         res.status(200).json({status:"updated successfully"})
     } catch (error) {

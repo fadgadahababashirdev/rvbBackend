@@ -20,13 +20,9 @@ const Booking = mongoose.Schema({
         type:Date,
         required:true,
     },
-    // message:{
-    //     type:String,
-    //     required:false
-    // },
-    createdAt:{
-        type:date,
-        default:Date.now
+    message:{
+        type:String,
+        required:false
     }
 })
 
